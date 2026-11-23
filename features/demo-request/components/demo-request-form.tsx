@@ -5,17 +5,10 @@ import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { Check } from "lucide-react";
-import { toast } from "sonner";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
-import { applyServerFieldErrors, isNetworkError } from "@/lib/api/errors";
 import { demoRequestSchema, type DemoRequestFormValues } from "../schemas";
 import { useCreateDemoRequest } from "../hooks/use-create-demo-request";
-import {
-  COMPANY_SIZES,
-  COMPANY_SIZE_LABELS,
-  DEMO_ANCHOR_ID,
-  DEMO_REQUEST_SERVER_FIELDS,
-} from "../constants";
+import { COMPANY_SIZES, COMPANY_SIZE_LABELS, DEMO_ANCHOR_ID } from "../constants";
 
 type TextField = "name" | "companyName" | "phone" | "email";
 
@@ -36,14 +29,12 @@ export function DemoRequestForm() {
   const t = useTranslations("landing.demo");
   const scope = React.useRef<HTMLDivElement>(null);
   const createDemoRequest = useCreateDemoRequest();
-  const [formError, setFormError] = React.useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     setValue,
     watch,
-    setError,
     formState: { errors },
   } = useForm<DemoRequestFormValues>({
     resolver: zodResolver(demoRequestSchema),
@@ -78,33 +69,11 @@ export function DemoRequestForm() {
     { scope, dependencies: [isDone] }
   );
 
-  const onValid = (values: DemoRequestFormValues) => {
-    setFormError(null);
-    createDemoRequest.mutate(values, {
-      onError: (error) => {
-        if (isNetworkError(error)) {
-          setFormError(t("errors.network"));
-          return;
-        }
-        const applied = applyServerFieldErrors(error, setError, DEMO_REQUEST_SERVER_FIELDS);
-        if (applied) {
-          shake(Object.keys(error.errors ?? {}).map((k) => DEMO_REQUEST_SERVER_FIELDS[k]).filter(Boolean));
-        }
-        // Backend message is already localized through Accept-Language
-        const message = error.message || t("errors.generic");
-        if (!applied) setFormError(message);
-        toast.error(message);
-      },
-    });
-  };
+  const onValid = (values: DemoRequestFormValues) => createDemoRequest.mutate(values);
 
   const onInvalid = (fieldErrors: FieldErrors<DemoRequestFormValues>) => shake(Object.keys(fieldErrors));
 
-  const errorFor = (field: TextField) => {
-    const error = errors[field];
-    if (!error) return null;
-    return error.type === "server" && error.message ? error.message : t(`fields.${field}.error`);
-  };
+  const errorFor = (field: TextField) => (errors[field] ? t(`fields.${field}.error`) : null);
 
   return (
     <div className="form-wrap" id={DEMO_ANCHOR_ID} ref={scope}>
@@ -176,14 +145,7 @@ export function DemoRequestForm() {
                       </button>
                     ))}
                   </div>
-                  {errors.companySize && <small>{errors.companySize.message ?? t("errors.generic")}</small>}
                 </div>
-
-                {formError && (
-                  <div className="form-alert" role="alert">
-                    {formError}
-                  </div>
-                )}
 
                 <button type="submit" className="submit" disabled={createDemoRequest.isPending}>
                   <span className="shine" />

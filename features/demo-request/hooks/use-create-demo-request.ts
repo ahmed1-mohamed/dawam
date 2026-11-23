@@ -1,25 +1,17 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { useLocale } from "next-intl";
-import type { ApiError } from "@/types/api";
-import { demoRequestService } from "../services/demo-request-service";
 import type { DemoRequestFormValues } from "../schemas";
-import type { DemoRequest } from "../types";
+import { SUBMIT_DELAY_MS } from "../constants";
 
+/**
+ * Static demo-request submission: no network request is made. It mimics the
+ * design (short loading state, then success) and keeps the mutation shape, so
+ * a real endpoint can be plugged into `mutationFn` later.
+ */
 export function useCreateDemoRequest() {
-  const locale = useLocale();
-
-  return useMutation<DemoRequest, ApiError, DemoRequestFormValues>({
+  return useMutation<DemoRequestFormValues, Error, DemoRequestFormValues>({
     mutationKey: ["demo-requests", "create"],
-    mutationFn: (values) =>
-      demoRequestService.create({
-        ...values,
-        name: values.name.trim(),
-        companyName: values.companyName.trim(),
-        email: values.email.trim(),
-        phone: values.phone.replace(/[^\d+]/g, ""),
-        locale,
-      }),
+    mutationFn: (values) => new Promise((resolve) => setTimeout(() => resolve(values), SUBMIT_DELAY_MS)),
   });
 }

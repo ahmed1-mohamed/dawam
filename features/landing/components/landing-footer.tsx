@@ -1,11 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useSiteSettings } from "../hooks/use-site-settings";
+import { SITE_SETTINGS as settings } from "../constants";
 
 export function LandingFooter() {
   const t = useTranslations("landing.footer");
-  const { settings } = useSiteSettings();
 
   return (
     <footer className="footer">

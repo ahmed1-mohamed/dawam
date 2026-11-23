@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { DEMO_ANCHOR_ID } from "@/features/demo-request";
-import { useSiteSettings } from "../hooks/use-site-settings";
+import { SITE_SETTINGS as settings } from "../constants";
 import { useBottomBarVisibility } from "../hooks/use-bottom-bar-visibility";
 import { DirArrow } from "./dir-arrow";
 
@@ -20,7 +20,6 @@ function WhatsAppIcon() {
  */
 export function BottomBar() {
   const t = useTranslations("landing.bottomBar");
-  const { settings } = useSiteSettings();
   const visible = useBottomBarVisibility();
 
   return (

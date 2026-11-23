@@ -1,4 +1,4 @@
-/** Public site settings from `GET /landing/settings`. */
+/** Static site details used by the footer and bottom bar. */
 export interface SiteSettings {
   contactEmail: string;
   /** International format, digits only (used for wa.me links). */

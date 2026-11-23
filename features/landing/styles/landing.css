@@ -226,7 +226,6 @@
 .dawam .spin { width: 18px; height: 18px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: dawam-spin 0.7s linear infinite; }
 @keyframes dawam-spin { to { transform: rotate(360deg); } }
 .dawam .fine { grid-column: 1 / -1; font-size: 12.5px; color: var(--dim); text-align: center; }
-.dawam .form-alert { grid-column: 1 / -1; padding: 10px 14px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--err) 35%, transparent); background: color-mix(in srgb, var(--err) 10%, transparent); color: var(--err); font-size: 13.5px; }
 .dawam .done { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 40px 10px; }
 .dawam .done .ok { width: 72px; height: 72px; border-radius: 50%; background: rgba(47, 191, 99, 0.14); border: 1px solid rgba(47, 191, 99, 0.4); display: grid; place-items: center; }
 .dawam .done .ok svg { width: 34px; height: 34px; color: var(--accent); }

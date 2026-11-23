@@ -8,8 +8,8 @@ export const NAV_LINKS: NavLink[] = [
   { key: "faq", href: "#faq" },
 ];
 
-/** Used until the API answers, or if it is unavailable. */
-export const FALLBACK_SITE_SETTINGS: SiteSettings = {
+/** Static site details (contact, WhatsApp, trial length, legal links). */
+export const SITE_SETTINGS: SiteSettings = {
   contactEmail: "m.salman@dawam.net",
   whatsappNumber: "201000000000",
   whatsappDisplay: "+20 100 000 0000",

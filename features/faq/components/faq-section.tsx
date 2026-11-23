@@ -8,7 +8,7 @@ import { useFaqs } from "../hooks/use-faqs";
 
 export function FaqSection() {
   const t = useTranslations("landing.faq");
-  const { items } = useFaqs();
+  const items = useFaqs();
   const [openId, setOpenId] = React.useState<string | null>(null);
   const scope = React.useRef<HTMLElement>(null);
 
@@ -20,7 +20,7 @@ export function FaqSection() {
         gsap.to(q.querySelector(".a"), { height: isOpen ? "auto" : 0, duration: 0.4, ease: "power2.inOut" });
       });
     },
-    { scope, dependencies: [openId, items] }
+    { scope, dependencies: [openId] }
   );
 
   return (

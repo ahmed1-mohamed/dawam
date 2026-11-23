@@ -314,10 +314,6 @@
       "success": {
         "title": "Request received",
         "body": "Thank you. We'll contact you soon to schedule the demo and set up your company account."
-      },
-      "errors": {
-        "generic": "Something went wrong while sending your request. Please try again.",
-        "network": "We couldn't reach the server. Check your connection and try again."
       }
     },
     "tracking": {
