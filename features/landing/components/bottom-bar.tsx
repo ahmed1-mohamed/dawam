@@ -49,7 +49,8 @@ export function BottomBar() {
             <span className="ltr">{settings.whatsappDisplay ?? `+${settings.whatsappNumber}`}</span>
           </a>
           <a className="btn btn-p bbar-cta" href={`#${DEMO_ANCHOR_ID}`}>
-            {t("cta")} <DirArrow />
+            <span className="full">{t("cta")}</span>
+            <span className="short">{t("ctaShort")}</span> <DirArrow />
           </a>
         </div>
       </div>

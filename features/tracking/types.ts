@@ -1,3 +1,6 @@
+/** [x, y] in map viewBox units. */
+export type RoutePoint = readonly [number, number];
+
 export type TrackingPinKey = "checkIn" | "nourhan" | "sami" | "salam" | "fouad" | "shifa" | "checkOut";
 
 /** Static pin definition: position on the 700×520 map viewBox. */

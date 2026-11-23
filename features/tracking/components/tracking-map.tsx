@@ -31,43 +31,49 @@ export function TrackingMap() {
     toward: (place) => t("toward", { place }),
   });
 
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
     <div className="map" ref={scope}>
-      <svg className="streets" viewBox={MAP_VIEWBOX} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <g stroke="rgba(255,255,255,.06)" strokeWidth="10" fill="none" strokeLinecap="round">
-          {MAJOR_STREETS.map((d) => (
-            <path key={d} d={d} />
-          ))}
-        </g>
-        <g stroke="rgba(255,255,255,.035)" strokeWidth="3" fill="none">
-          {MINOR_STREETS.map((d) => (
-            <path key={d} d={d} />
-          ))}
-        </g>
-        <path d="M560 360 Q610 330 640 280" stroke="rgba(47,191,99,.08)" strokeWidth="40" fill="none" strokeLinecap="round" />
-        <path d={ROUTE_PATH} stroke="rgba(255,255,255,.12)" strokeWidth="4" fill="none" strokeDasharray="2 10" strokeLinecap="round" />
-        <path data-route="" d={ROUTE_PATH} stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      <div className="map-canvas" data-canvas="">
+        <svg className="streets" viewBox={MAP_VIEWBOX} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g stroke="rgba(255,255,255,.06)" strokeWidth="10" fill="none" strokeLinecap="round">
+            {MAJOR_STREETS.map((d) => (
+              <path key={d} d={d} />
+            ))}
+          </g>
+          <g stroke="rgba(255,255,255,.035)" strokeWidth="3" fill="none">
+            {MINOR_STREETS.map((d) => (
+              <path key={d} d={d} />
+            ))}
+          </g>
+          <path d="M560 360 Q610 330 640 280" stroke="rgba(47,191,99,.08)" strokeWidth="40" fill="none" strokeLinecap="round" />
+          <path d={ROUTE_PATH} stroke="rgba(255,255,255,.12)" strokeWidth="4" fill="none" strokeDasharray="2 10" strokeLinecap="round" />
+          <path data-route="" d={ROUTE_PATH} stroke="var(--accent)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
 
-      <div className="map-top" dir={locale === "ar" ? "rtl" : "ltr"}>
-        <span className="chip">
-          <span className="live" />
-          {t("repName")}
-        </span>
+        <div className="map-top" dir={dir}>
+          <span className="chip">
+            <span className="live" />
+            {t("repName")}
+          </span>
+        </div>
+
+        {pins.map((pin) => (
+          <div key={pin.key} className="pin" data-pin="">
+            <div className="lbl" dir={dir}>
+              <b>{pin.label}</b>
+              <span>{pin.clock}</span>
+            </div>
+            <div className="dot" />
+            <span className="ring" />
+          </div>
+        ))}
+
+        <div className="rep" data-rep="" />
       </div>
 
-      {pins.map((pin) => (
-        <div key={pin.key} className="pin" data-pin="">
-          <div className="lbl" dir={locale === "ar" ? "rtl" : "ltr"}>
-            <b>{pin.label}</b>
-            <span>{pin.clock}</span>
-          </div>
-          <div className="dot" />
-          <span className="ring" />
-        </div>
-      ))}
-
-      <div className="now" dir={locale === "ar" ? "rtl" : "ltr"} aria-live="polite">
+      <div className="now" dir={dir} aria-live="polite">
         <span className="now-k">{t("now")}</span>
         <b className="now-name" data-now-name="">
           —
@@ -80,8 +86,6 @@ export function TrackingMap() {
           <b data-now-count="">0/{TOTAL_VISITS}</b>
         </div>
       </div>
-
-      <div className="rep" data-rep="" />
     </div>
   );
 }

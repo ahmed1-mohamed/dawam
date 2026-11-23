@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useDirection } from "@/hooks/use-direction";
+import { useSmoothAnchors } from "@/hooks/use-smooth-anchors";
 import { TrackingSection } from "@/features/tracking";
 import { ToolsSection } from "@/features/tools";
 import { IndustriesSection } from "@/features/industries";
@@ -22,6 +23,7 @@ export function LandingPage() {
   const { direction } = useDirection();
   const scope = React.useRef<HTMLDivElement>(null);
   useLandingAnimations(scope);
+  useSmoothAnchors(scope);
 
   return (
     <div ref={scope} dir={direction} className={`dawam ${plexArabic.variable} ${plexMono.variable}`}>

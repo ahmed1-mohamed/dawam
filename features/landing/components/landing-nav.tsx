@@ -1,9 +1,8 @@
 "use client";
 
+import * as React from "react";
 import { useTranslations } from "next-intl";
-import { useSession } from "next-auth/react";
-import { Languages, Moon, Sun } from "lucide-react";
-import { Link } from "@/i18n/routing";
+import { Languages, Menu, Moon, Sun, X } from "lucide-react";
 import { useLocaleToggle } from "@/hooks/use-locale-toggle";
 import { useThemeToggle } from "@/hooks/use-theme-toggle";
 import { DEMO_ANCHOR_ID } from "@/features/demo-request";
@@ -43,39 +42,66 @@ function ThemeIconButton() {
 
 export function LandingNav() {
   const t = useTranslations("landing.nav");
-  const tCommon = useTranslations("common");
-  const { status } = useSession();
+  const [open, setOpen] = React.useState(false);
+  const navRef = React.useRef<HTMLElement>(null);
+
+  // Close the mobile menu on Escape, outside click, or when resized to desktop
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onPointer = (e: PointerEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 961px)");
+    const onDesktop = () => desktop.matches && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    desktop.addEventListener("change", onDesktop);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+      desktop.removeEventListener("change", onDesktop);
+    };
+  }, [open]);
+
+  const links = NAV_LINKS.map((link) => (
+    <a key={link.key} href={link.href} onClick={() => setOpen(false)}>
+      {t(`links.${link.key}`)}
+    </a>
+  ));
 
   return (
-    <nav className="nav" aria-label={t("label")}>
+    <nav className={`nav${open ? " open" : ""}`} aria-label={t("label")} ref={navRef}>
       <div className="nav-in">
         <a href="#top" className="logo">
           <b>{t("logoMark")}</b>
           {t("brand")}
         </a>
-        <div className="nav-links">
-          {NAV_LINKS.map((link) => (
-            <a key={link.key} href={link.href}>
-              {t(`links.${link.key}`)}
-            </a>
-          ))}
-        </div>
+        <div className="nav-links">{links}</div>
         <div className="nav-acts">
           <LocaleIconButton />
           <ThemeIconButton />
-          {status === "authenticated" ? (
-            <Link href="/dashboard" className="nav-login">
-              {tCommon("dashboard")}
-            </Link>
-          ) : (
-            <Link href="/login" className="nav-login">
-              {t("login")}
-            </Link>
-          )}
           <a href={`#${DEMO_ANCHOR_ID}`} className="nav-cta">
             {t("cta")}
           </a>
+          <button
+            type="button"
+            className="icon-btn menu-btn"
+            aria-expanded={open}
+            aria-controls="landing-menu"
+            aria-label={open ? t("closeMenu") : t("openMenu")}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X /> : <Menu />}
+          </button>
         </div>
+      </div>
+
+      <div className="nav-menu" id="landing-menu" hidden={!open}>
+        <div className="nav-menu-links">{links}</div>
+        <a href={`#${DEMO_ANCHOR_ID}`} className="btn btn-p nav-menu-cta" onClick={() => setOpen(false)}>
+          {t("cta")}
+        </a>
       </div>
     </nav>
   );

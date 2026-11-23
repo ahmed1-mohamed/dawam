@@ -29,7 +29,7 @@ export function DashboardPreviewSection() {
         duration: 0.8,
         stagger: 0.1,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".roles", start: "top 85%" },
+        scrollTrigger: { trigger: ".roles", start: "top 85%", once: true },
       });
       gsap.from(".d-row", {
         y: 14,
@@ -37,7 +37,7 @@ export function DashboardPreviewSection() {
         duration: 0.5,
         stagger: 0.06,
         ease: "power3.out",
-        scrollTrigger: { trigger: ".dash", start: "top 80%" },
+        scrollTrigger: { trigger: ".dash", start: "top 80%", once: true },
       });
       gsap.utils.toArray<HTMLElement>(".d-kpis b").forEach((el) => {
         const target = Number(el.dataset.kpi ?? el.textContent);
@@ -46,7 +46,7 @@ export function DashboardPreviewSection() {
           n: target,
           duration: 1.4,
           ease: "power2.out",
-          scrollTrigger: { trigger: ".dash", start: "top 80%" },
+          scrollTrigger: { trigger: ".dash", start: "top 80%", once: true },
           onUpdate: () => {
             el.textContent = String(Math.round(counter.n));
           },

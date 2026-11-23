@@ -30,7 +30,7 @@ export function ToolsSection() {
         duration: 0.8,
         stagger: 0.08,
         ease: "power3.out",
-        scrollTrigger: { trigger: accRef.current, start: "top 85%" },
+        scrollTrigger: { trigger: accRef.current, start: "top 85%", once: true },
       });
     },
     { scope: accRef }

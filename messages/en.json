@@ -260,10 +260,11 @@
         "faq": "FAQ"
       },
       "cta": "Request a demo",
-      "login": "Log in",
       "switchLanguage": "Switch to {language}",
       "darkMode": "Dark mode",
-      "lightMode": "Light mode"
+      "lightMode": "Light mode",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
     },
     "hero": {
       "badge": "Your team closer. Your management clearer.",
@@ -660,7 +661,8 @@
       "title": "Get {days} days free",
       "sub": "Try Dawam with your team, no commitment",
       "whatsapp": "Contact us on WhatsApp",
-      "cta": "Start free trial"
+      "cta": "Start free trial",
+      "ctaShort": "Start free"
     }
   }
 }

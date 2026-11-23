@@ -1,9 +1,26 @@
-import type { TrackingPin } from "./types";
+import type { RoutePoint, TrackingPin } from "./types";
 
-export const MAP_VIEWBOX = "0 0 700 520";
+export const MAP_WIDTH = 700;
+export const MAP_HEIGHT = 520;
+export const MAP_VIEWBOX = `0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`;
 
-export const ROUTE_PATH =
-  "M120 440 L120 300 L220 300 L220 200 L330 200 L330 120 L440 120 L440 300 L540 300 L540 440 L630 440 L630 200";
+/** The rep's route as a polyline (map viewBox units). */
+export const ROUTE_POINTS: RoutePoint[] = [
+  [120, 440],
+  [120, 300],
+  [220, 300],
+  [220, 200],
+  [330, 200],
+  [330, 120],
+  [440, 120],
+  [440, 300],
+  [540, 300],
+  [540, 440],
+  [630, 440],
+  [630, 200],
+];
+
+export const ROUTE_PATH = ROUTE_POINTS.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join(" ");
 
 export const MAJOR_STREETS = [
   "M-20 120 H720",

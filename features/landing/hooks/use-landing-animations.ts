@@ -4,8 +4,12 @@ import type { RefObject } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
 /**
- * Page-wide scroll effects: fade-up for `.reveal` elements and the
- * "sheet" sections that widen to full width as they scroll through.
+ * Page-wide scroll effects: fade-up for `.reveal` elements and the "sheet"
+ * sections that widen to full width as they scroll through (as in the design).
+ *
+ * Performance: the sheet effect scrubs two CSS variables that clip the
+ * section's ::before surface (paint only, no layout), and reveal triggers are
+ * one-shot so they are removed after playing.
  */
 export function useLandingAnimations(scope: RefObject<HTMLElement | null>) {
   useGSAP(
@@ -18,11 +22,13 @@ export function useLandingAnimations(scope: RefObject<HTMLElement | null>) {
           opacity: 0,
           duration: 0.9,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 88%" },
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
         })
       );
 
-      const inset = () => Math.min(window.innerWidth * 0.05, 64);
+      const inset = () => `${Math.min(window.innerWidth * 0.05, 64)}px`;
+      const insetOut = () => `${Math.min(window.innerWidth * 0.05, 64) * 0.6}px`;
+
       gsap.utils.toArray<HTMLElement>(".sheet").forEach((sheet) => {
         gsap
           .timeline({
@@ -30,11 +36,11 @@ export function useLandingAnimations(scope: RefObject<HTMLElement | null>) {
           })
           .fromTo(
             sheet,
-            { marginLeft: inset, marginRight: inset, borderRadius: "40px 40px 0 0" },
-            { marginLeft: 0, marginRight: 0, borderRadius: "28px 28px 0 0", ease: "power2.out", duration: 0.35 }
+            { "--sheet-i": inset, "--sheet-r": "40px" },
+            { "--sheet-i": "0px", "--sheet-r": "28px", ease: "power2.out", duration: 0.35 }
           )
-          .to(sheet, { marginLeft: 0, duration: 0.3 })
-          .to(sheet, { marginLeft: () => inset() * 0.6, marginRight: () => inset() * 0.6, ease: "power2.in", duration: 0.35 });
+          .to(sheet, { "--sheet-i": "0px", duration: 0.3 })
+          .to(sheet, { "--sheet-i": insetOut, ease: "power2.in", duration: 0.35 });
       });
 
       gsap.utils.toArray<HTMLElement>("[data-float]").forEach((el) =>
