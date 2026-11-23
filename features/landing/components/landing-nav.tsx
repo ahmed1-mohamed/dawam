@@ -64,11 +64,17 @@ export function LandingNav() {
     };
   }, [open]);
 
-  const links = NAV_LINKS.map((link) => (
-    <a key={link.key} href={link.href} onClick={() => setOpen(false)}>
-      {t(`links.${link.key}`)}
-    </a>
-  ));
+  const linkItems = (withIndex: boolean) =>
+    NAV_LINKS.map((link, i) => (
+      <a
+        key={link.key}
+        href={link.href}
+        onClick={() => setOpen(false)}
+        style={withIndex ? ({ "--i": i } as React.CSSProperties) : undefined}
+      >
+        {t(`links.${link.key}`)}
+      </a>
+    ));
 
   return (
     <nav className={`nav${open ? " open" : ""}`} aria-label={t("label")} ref={navRef}>
@@ -77,7 +83,7 @@ export function LandingNav() {
           <b>{t("logoMark")}</b>
           {t("brand")}
         </a>
-        <div className="nav-links">{links}</div>
+        <div className="nav-links">{linkItems(false)}</div>
         <div className="nav-acts">
           <LocaleIconButton />
           <ThemeIconButton />
@@ -92,16 +98,26 @@ export function LandingNav() {
             aria-label={open ? t("closeMenu") : t("openMenu")}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X /> : <Menu />}
+            {/* both icons stay mounted so CSS can morph ☰ ⇄ ✕ */}
+            <Menu className="mi-open" aria-hidden="true" />
+            <X className="mi-close" aria-hidden="true" />
           </button>
         </div>
       </div>
 
-      <div className="nav-menu" id="landing-menu" hidden={!open}>
-        <div className="nav-menu-links">{links}</div>
-        <a href={`#${DEMO_ANCHOR_ID}`} className="btn btn-p nav-menu-cta" onClick={() => setOpen(false)}>
-          {t("cta")}
-        </a>
+      {/* Always mounted so it can animate open and closed; inert while closed */}
+      <div className="nav-menu" id="landing-menu" aria-hidden={!open} inert={!open}>
+        <div className="nav-menu-inner">
+          <div className="nav-menu-links">{linkItems(true)}</div>
+          <a
+            href={`#${DEMO_ANCHOR_ID}`}
+            className="btn btn-p nav-menu-cta"
+            onClick={() => setOpen(false)}
+            style={{ "--i": NAV_LINKS.length } as React.CSSProperties}
+          >
+            {t("cta")}
+          </a>
+        </div>
       </div>
     </nav>
   );
