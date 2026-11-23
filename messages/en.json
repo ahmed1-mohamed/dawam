@@ -1,0 +1,666 @@
+{
+  "common": {
+    "appName": "Next.js Starter",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "components": "Components",
+    "settings": "Settings",
+    "profile": "Profile",
+    "logout": "Log out",
+    "search": "Search...",
+    "actions": "Actions",
+    "filter": "Filter",
+    "clear": "Clear",
+    "status": "Status",
+    "date": "Date",
+    "loading": "Loading...",
+    "save": "Save changes",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "create": "Create",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "pending": "Pending",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information",
+    "refresh": "Refresh",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "arabic": "العربية",
+    "english": "English",
+    "notifications": "Notifications",
+    "noNotifications": "No new notifications",
+    "rowsPerPage": "Rows per page",
+    "page": "Page",
+    "of": "of",
+    "showing": "Showing",
+    "to": "to",
+    "entries": "entries"
+  },
+  "nav": {
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "users": "Users",
+    "reports": "Reports",
+    "showcase": "UI Showcase",
+    "documentation": "Docs",
+    "github": "GitHub"
+  },
+  "home": {
+    "badge": "Production-Ready Template",
+    "title": "Modern Full-Stack Starter Template",
+    "subtitle": "A robust, scalable frontend architecture built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, and bidirectional i18n support.",
+    "getStarted": "Explore Dashboard",
+    "viewComponents": "Component Showcase",
+    "featuresTitle": "Architected for Scale and Developer Velocity",
+    "featuresSubtitle": "Everything you need to jumpstart enterprise applications with clean code principles.",
+    "features": {
+      "i18n": {
+        "title": "Bilingual (AR/EN) & RTL",
+        "description": "Seamless English and Arabic language switching with instant RTL/LTR layout transitions and zero layout shifts."
+      },
+      "theme": {
+        "title": "Light & Dark Theming",
+        "description": "Flicker-free theme switching with next-themes, standard semantic CSS variables, and accessible contrast ratios."
+      },
+      "forms": {
+        "title": "Type-Safe Forms",
+        "description": "Form validation powered by React Hook Form and Zod schemas with localized validation feedback."
+      },
+      "api": {
+        "title": "API & Server State",
+        "description": "Centralized Axios client with interceptors, token management, and TanStack Query for optimal caching."
+      },
+      "ui": {
+        "title": "Modular Design System",
+        "description": "Carefully selected shadcn/ui components customized for consistency, accessibility, and RTL readiness."
+      },
+      "state": {
+        "title": "Predictable State Management",
+        "description": "Lightweight client-side state powered by Zustand with persistent storage support."
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Executive Dashboard",
+    "description": "Real-time key metrics, user activity, and performance indicators.",
+    "addNewUser": "Add New User",
+    "exportData": "Export Report",
+    "stats": {
+      "revenue": {
+        "title": "Total Revenue",
+        "change": "+14.2% from last month"
+      },
+      "users": {
+        "title": "Active Users",
+        "change": "+8.4% new registrations"
+      },
+      "conversions": {
+        "title": "Conversion Rate",
+        "change": "+2.1% improvement"
+      },
+      "performance": {
+        "title": "System Uptime",
+        "change": "Zero downtime recorded"
+      }
+    },
+    "charts": {
+      "revenueTrend": "Revenue & Growth Overview",
+      "revenueSub": "Monthly performance comparison across quarters",
+      "userDistribution": "User Roles Distribution",
+      "userDistributionSub": "Role distribution across the organization"
+    },
+    "table": {
+      "title": "User Management",
+      "description": "Manage registered platform users, roles, and account statuses.",
+      "searchPlaceholder": "Search users by name or email...",
+      "filterRole": "Filter by role",
+      "filterStatus": "Filter by status",
+      "columns": {
+        "name": "User",
+        "role": "Role",
+        "status": "Status",
+        "joined": "Joined Date",
+        "actions": "Actions"
+      },
+      "roles": {
+        "admin": "Admin",
+        "developer": "Developer",
+        "designer": "Designer",
+        "manager": "Manager"
+      },
+      "noResults": "No users found matching your criteria.",
+      "noResultsSub": "Try adjusting your search queries or active filters."
+    }
+  },
+  "userForm": {
+    "createTitle": "Create New User",
+    "createSubtitle": "Fill in the details below to add a member to the workspace.",
+    "editTitle": "Edit User Details",
+    "editSubtitle": "Update member profile, role assignment, and access status.",
+    "fields": {
+      "name": "Full Name",
+      "namePlaceholder": "e.g. Sarah Jenkins",
+      "email": "Email Address",
+      "emailPlaceholder": "sarah@example.com",
+      "role": "Assigned Role",
+      "rolePlaceholder": "Select a role",
+      "status": "Account Status",
+      "bio": "Bio / Notes",
+      "bioPlaceholder": "Brief background or responsibilities...",
+      "receiveEmails": "Receive monthly product updates and announcements",
+      "plan": "Subscription Plan"
+    },
+    "validation": {
+      "nameRequired": "Full name is required (minimum 3 characters).",
+      "invalidEmail": "Please provide a valid email address.",
+      "roleRequired": "Please select a valid role.",
+      "statusRequired": "Please select an account status."
+    },
+    "notifications": {
+      "createSuccess": "User has been created successfully.",
+      "updateSuccess": "User details have been updated successfully.",
+      "deleteSuccess": "User was removed from the system."
+    }
+  },
+  "showcase": {
+    "title": "UI Component Design System",
+    "description": "Interactive showcase of our accessible, responsive shadcn/ui components in both LTR and RTL orientations.",
+    "buttons": "Buttons & Variants",
+    "inputs": "Form Controls & Inputs",
+    "feedback": "Feedback, Dialogs & Modals",
+    "navigation": "Navigation & Breadcrumbs",
+    "states": "Empty & Error States",
+    "openDialog": "Open Example Modal",
+    "dialogTitle": "Confirm Workspace Deletion",
+    "dialogDesc": "This action cannot be undone. All project data will be permanently removed.",
+    "dialogConfirm": "Proceed",
+    "triggerToast": "Trigger Success Toast",
+    "toastMessage": "Operation completed successfully!",
+    "tabs": {
+      "overview": "Overview",
+      "analytics": "Analytics",
+      "reports": "Reports",
+      "notifications": "Notifications"
+    }
+  },
+  "emptyState": {
+    "title": "No Records Found",
+    "description": "There is no data to display right now. Start by adding a new item.",
+    "action": "Create Record"
+  },
+  "errorState": {
+    "title": "Something Went Wrong",
+    "description": "An unexpected error occurred while fetching data. Please try again.",
+    "retry": "Try Again"
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to Home"
+  },
+  "errorPage": {
+    "title": "An Application Error Occurred",
+    "description": "We encountered an unexpected issue while rendering this page.",
+    "tryAgain": "Try Again",
+    "backHome": "Return Home"
+  },
+  "footer": {
+    "tagline": "Built with modern standards for scalable enterprise frontends.",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to your account to continue",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in...",
+    "signOut": "Sign out",
+    "login": "Log in",
+    "invalidCredentials": "Invalid email or password",
+    "genericError": "Something went wrong. Please try again.",
+    "loginSuccess": "Signed in successfully",
+    "validation": {
+      "email": "Please enter a valid email address",
+      "password": "Password must be at least 6 characters"
+    }
+  },
+  "landing": {
+    "meta": {
+      "title": "Dawam | Attendance & Field Rep Tracking",
+      "description": "Dawam helps your company track attendance and field visits, and manage shifts and leave — all in one place."
+    },
+    "nav": {
+      "label": "Main navigation",
+      "brand": "Dawam",
+      "logoMark": "D",
+      "links": {
+        "tracking": "Rep tracking",
+        "features": "Features",
+        "who": "Who it's for",
+        "why": "Why Dawam",
+        "faq": "FAQ"
+      },
+      "cta": "Request a demo",
+      "login": "Log in",
+      "switchLanguage": "Switch to {language}",
+      "darkMode": "Dark mode",
+      "lightMode": "Light mode"
+    },
+    "hero": {
+      "badge": "Your team closer. Your management clearer.",
+      "titleLine1": "Every workday,",
+      "titleLine2": "in a",
+      "titleEmphasis": "clear picture.",
+      "lead": "Dawam helps your company track attendance and field visits, and manage shifts and leave — all in one place.",
+      "primaryCta": "Request a demo",
+      "secondaryCta": "See how it works",
+      "trust": {
+        "teams": "For companies with teams in and out of the office",
+        "arabic": "Fully bilingual, Arabic-first app",
+        "support": "Setup & follow-up by our team"
+      }
+    },
+    "demo": {
+      "title": "Put your company on Dawam",
+      "subtitle": "Leave your details and our team will reach out within one business day to set up a trial for your company.",
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Mohamed Abdelrahman",
+          "error": "Please enter your name"
+        },
+        "companyName": {
+          "label": "Company name",
+          "placeholder": "Al Nour Pharma",
+          "error": "Please enter your company name"
+        },
+        "phone": {
+          "label": "Mobile number",
+          "placeholder": "010 1234 5678",
+          "error": "Invalid phone number"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "name@company.com",
+          "error": "Invalid email address"
+        },
+        "companySize": {
+          "label": "Number of employees"
+        }
+      },
+      "submit": "Book a free demo",
+      "submitting": "Sending…",
+      "fine": "No commitment. Your details are only used to contact you.",
+      "success": {
+        "title": "Request received",
+        "body": "Thank you. We'll contact you soon to schedule the demo and set up your company account."
+      },
+      "errors": {
+        "generic": "Something went wrong while sending your request. Please try again.",
+        "network": "We couldn't reach the server. Check your connection and try again."
+      }
+    },
+    "tracking": {
+      "title": "Every step of a rep's day, with time and place",
+      "desc": "Follow a rep's whole day on the map: every place they visited, when they arrived and how long they stayed — from check-in to check-out.",
+      "repName": "Ahmed Hassan",
+      "now": "Now",
+      "visits": "Visits",
+      "onTheWay": "On the way",
+      "toward": "To {place}",
+      "demoNote": "Feature demo — not real data",
+      "pins": {
+        "checkIn": {
+          "label": "Check-in",
+          "name": "Check-in · Head office",
+          "time": "08:56 AM",
+          "duration": ""
+        },
+        "nourhan": {
+          "label": "Dr. Nourhan Abdelrahman",
+          "name": "Dr. Nourhan Abdelrahman",
+          "time": "09:30 AM",
+          "duration": "15 min"
+        },
+        "sami": {
+          "label": "Dr. Ahmed Sami Clinic",
+          "name": "Dr. Ahmed Sami Clinic",
+          "time": "10:12 AM",
+          "duration": "25 min"
+        },
+        "salam": {
+          "label": "El Salam Hospital",
+          "name": "El Salam Hospital",
+          "time": "11:20 AM",
+          "duration": "40 min"
+        },
+        "fouad": {
+          "label": "Dar Al Fouad",
+          "name": "Dar Al Fouad",
+          "time": "12:45 PM",
+          "duration": "30 min"
+        },
+        "shifa": {
+          "label": "El Shifa Pharmacy",
+          "name": "El Shifa Pharmacy",
+          "time": "02:05 PM",
+          "duration": "18 min"
+        },
+        "checkOut": {
+          "label": "Check-out",
+          "name": "Check-out",
+          "time": "04:58 PM",
+          "duration": ""
+        }
+      }
+    },
+    "tools": {
+      "eyebrow": "From the branch to the field",
+      "title": "Tools that serve your team, wherever they are.",
+      "desc": "A mobile app for employees, and a dashboard for management and HR that brings all the data together in one place.",
+      "items": {
+        "attendance": {
+          "title": "Attendance",
+          "body": "Track check-ins and check-outs, tied to branches and geolocation according to your company policy."
+        },
+        "visits": {
+          "title": "Field visits",
+          "body": "Follow rep and customer visits with visit reports to support supervision of field teams."
+        },
+        "tasks": {
+          "title": "Tasks",
+          "body": "Assign a task with a priority and due date, and track its status without phone calls."
+        },
+        "leaves": {
+          "title": "Leave & permissions",
+          "body": "Manage shifts, leave and reports, with offline actions synced once the connection is back (depending on version)."
+        },
+        "employees": {
+          "title": "Employee records",
+          "body": "Department, job title, insurance and the full history in one profile."
+        }
+      }
+    },
+    "industries": {
+      "eyebrow": "Who it's for",
+      "title": "For any company with people on the move, or branches that need oversight",
+      "desc": "Dawam fits companies with part of the team in the office and part in the field, and managers who need real attendance and productivity numbers instead of paper sheets and phone calls.",
+      "mostUsed": "Most used",
+      "items": {
+        "pharma": {
+          "title": "Pharma & medical supplies",
+          "body": "Medical reps visit doctors, pharmacies and hospitals all day. Dawam logs each visit with time, place and duration — who was visited and who wasn't yet."
+        },
+        "distribution": {
+          "title": "Distribution & sales",
+          "body": "Sales teams covering shops and customers. Know who each rep reached, when orders went out, and where their time went."
+        },
+        "branches": {
+          "title": "Multi-branch companies",
+          "body": "Attendance per branch within its geofence, different shifts per branch, and one dashboard for management to see them all."
+        },
+        "maintenance": {
+          "title": "Maintenance & services",
+          "body": "Technicians going to customer sites. Assign the job and see when the technician arrived and finished, with a photo from the site."
+        },
+        "collection": {
+          "title": "Collection & field marketing",
+          "body": "Collection reps or marketing teams across different areas. A clear daily route, who was late and who covered their area."
+        },
+        "offices": {
+          "title": "Offices & institutions",
+          "body": "Even if the whole team is in the office, Dawam replaces the fingerprint device and keeps attendance, leave, permissions and records in one place."
+        }
+      },
+      "chips": {
+        "visits": "Visits",
+        "route": "Route",
+        "reports": "Reports",
+        "liveTracking": "Live tracking",
+        "customers": "Customers",
+        "tasks": "Tasks",
+        "attendance": "Attendance",
+        "shifts": "Shifts",
+        "leaves": "Leave",
+        "photos": "Photos",
+        "files": "Records"
+      }
+    },
+    "dashboard": {
+      "eyebrow": "App & dashboard",
+      "title": "Everyone in the company sees what matters to them",
+      "desc": "Employees work from the app on their phones, while managers and HR see the full picture from the dashboard.",
+      "demoNote": "Feature demo — not real data · Capabilities vary by app version and company settings.",
+      "roles": {
+        "manager": {
+          "label": "Manager",
+          "desc": "Who's in and who's late today, where the reps are right now, and requests waiting for approval."
+        },
+        "hr": {
+          "label": "HR",
+          "desc": "Monthly reports on attendance, lateness, absence and leave — ready for payroll."
+        },
+        "employee": {
+          "label": "Employee & rep",
+          "desc": "Checks in, sees their visits and tasks, and submits requests from their phone."
+        }
+      },
+      "people": {
+        "ahmed": {
+          "name": "Ahmed Hassan",
+          "initials": "AH"
+        },
+        "sara": {
+          "name": "Sara Mahmoud",
+          "initials": "SM"
+        },
+        "karim": {
+          "name": "Karim Ali",
+          "initials": "KA"
+        },
+        "noha": {
+          "name": "Noha Youssef",
+          "initials": "NY"
+        },
+        "mohamed": {
+          "name": "Mohamed Adel",
+          "initials": "MA"
+        }
+      },
+      "places": {
+        "salam": "El Salam Hospital",
+        "maadi": "Maadi branch",
+        "shifa": "El Shifa Pharmacy",
+        "hq": "Head office"
+      },
+      "manager": {
+        "kpis": {
+          "present": "Present",
+          "late": "Late",
+          "absent": "Absent",
+          "inField": "In the field"
+        },
+        "cols": {
+          "employee": "Employee",
+          "checkIn": "Check-in",
+          "lastLocation": "Last location",
+          "status": "Status"
+        },
+        "status": {
+          "visiting": "On a visit",
+          "late": "Late",
+          "onLeave": "On leave",
+          "present": "Present"
+        }
+      },
+      "hr": {
+        "kpis": {
+          "workDays": "Work days",
+          "lateHours": "Late hours",
+          "absentDays": "Absent days",
+          "approvedLeaves": "Approved leave"
+        },
+        "cols": {
+          "employee": "Employee",
+          "daysPresent": "Days present",
+          "lateness": "Lateness",
+          "absences": "Absences"
+        },
+        "durationHM": "{h}h {m}m",
+        "durationM": "{m}m"
+      },
+      "employee": {
+        "cards": {
+          "selfie": {
+            "tag": "Selfie + location",
+            "title": "Check in within seconds",
+            "body": "Photo, location and time — the system compares it to the shift automatically."
+          },
+          "schedule": {
+            "tag": "3 visits today",
+            "title": "Visit schedule",
+            "body": "Today's visits in order, plus adding a new customer on the go."
+          },
+          "requests": {
+            "tag": "Pending request",
+            "title": "Leave & permission requests",
+            "body": "Submit a request, follow the manager's reply and check the balance."
+          }
+        },
+        "cols": {
+          "task": "Assigned tasks",
+          "due": "Due",
+          "priority": "Priority",
+          "status": "Status"
+        },
+        "tasks": {
+          "weeklyReport": "Weekly visits report",
+          "followOrder": "Follow up El Shifa Pharmacy order",
+          "updateClients": "Update customer data"
+        },
+        "due": {
+          "thursday": "Thursday",
+          "tomorrow": "Tomorrow",
+          "sunday": "Sunday"
+        },
+        "priority": {
+          "high": "High",
+          "medium": "Medium",
+          "normal": "Normal"
+        },
+        "status": {
+          "new": "New",
+          "inProgress": "In progress"
+        }
+      }
+    },
+    "why": {
+      "eyebrow": "Why Dawam",
+      "title": "Built for companies with teams in the office and in the field",
+      "cta": "Request a demo",
+      "items": {
+        "tamperProof": {
+          "title": "Hard to cheat",
+          "body": "Every check-in or visit requires a selfie and a real location inside the allowed zone — no clocking in for someone else."
+        },
+        "fullPicture": {
+          "title": "The full picture of your team's day",
+          "body": "Attendance, visits, tasks and leave are linked, so you know who's working on what and who's available without asking."
+        },
+        "arabicFirst": {
+          "title": "Arabic-first",
+          "body": "A right-to-left Arabic interface with clear wording employees understand from day one — no long training."
+        },
+        "payroll": {
+          "title": "Payroll-ready reports",
+          "body": "Working hours, lateness, absence and leave in one report you can export for HR at the end of the month."
+        }
+      }
+    },
+    "steps": {
+      "eyebrow": "Getting started",
+      "title": "From request to the first check-in",
+      "items": {
+        "request": {
+          "title": "Send your request",
+          "body": "Fill in the form and our team will contact you to understand how your company works."
+        },
+        "setup": {
+          "title": "We set up your account",
+          "body": "We add branches, shifts, departments and employees, and draw each branch's zone on the map."
+        },
+        "start": {
+          "title": "Your team starts",
+          "body": "Employees install the Dawam app and sign in, and you start tracking from the dashboard."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Before you start",
+      "desc": "If your question isn't here, send a request through the form and our team will get back to you.",
+      "items": {
+        "remote": {
+          "question": "Can an employee check in from home?",
+          "answer": "No. Each branch has a geofence on the map, and check-ins are only accepted inside it with a selfie — unless you allow remote work for a specific employee."
+        },
+        "tracking": {
+          "question": "Does tracking run all the time?",
+          "answer": "Tracking only runs during working hours, from check-in to check-out. After check-out the employee's location isn't tracked at all."
+        },
+        "devices": {
+          "question": "Do we need fingerprint devices or special hardware?",
+          "answer": "No. Employees use their own phones (Android or iPhone), and management uses the dashboard from any browser."
+        },
+        "offline": {
+          "question": "Does the app work on a weak connection?",
+          "answer": "Check-ins are saved on the phone and uploaded as soon as the connection is back, with the original time and location."
+        },
+        "payroll": {
+          "question": "Can we export payroll reports?",
+          "answer": "Yes — a monthly report per employee with days present, lateness, absence and leave, exportable to Excel."
+        },
+        "setup": {
+          "question": "How long does setup take?",
+          "answer": "Our team sets up your company account with branches, shifts and employees, and your employees can start the same day."
+        }
+      }
+    },
+    "cta": {
+      "title": "Start with a clearer picture of your team.",
+      "body": "Get in touch to learn about Dawam and discuss your company's needs.",
+      "button": "Contact the Dawam team"
+    },
+    "footer": {
+      "legal": "Dawam — a product under a partnership agreement between HighSpeed and ADVIX Solutions.",
+      "privacy": "Privacy policy",
+      "deleteAccount": "Request account & data deletion"
+    },
+    "bottomBar": {
+      "label": "Free trial offer",
+      "title": "Get {days} days free",
+      "sub": "Try Dawam with your team, no commitment",
+      "whatsapp": "Contact us on WhatsApp",
+      "cta": "Start free trial"
+    }
+  }
+}
