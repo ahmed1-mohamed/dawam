@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/gsap";
+import { useLazyAnimation } from "@/hooks/use-lazy-animation";
 import { useAutoRotate } from "@/hooks/use-auto-rotate";
 import { DirArrow } from "@/features/landing/components/dir-arrow";
 import { CHIP_ICONS, INDUSTRIES, INDUSTRY_ROTATE_SECONDS } from "../constants";
@@ -19,8 +20,8 @@ export function IndustriesSection() {
     allBarsSelector: ".ind2-bar i",
   });
 
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       if (prefersReducedMotion()) return;
       const pane = `[data-panel="${active}"]`;
       gsap.fromTo(`${pane} .ind2-big`, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });

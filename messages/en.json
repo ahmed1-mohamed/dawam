@@ -59,41 +59,6 @@
     "documentation": "Docs",
     "github": "GitHub"
   },
-  "home": {
-    "badge": "Production-Ready Template",
-    "title": "Modern Full-Stack Starter Template",
-    "subtitle": "A robust, scalable frontend architecture built with Next.js 15, TypeScript, Tailwind CSS, shadcn/ui, and bidirectional i18n support.",
-    "getStarted": "Explore Dashboard",
-    "viewComponents": "Component Showcase",
-    "featuresTitle": "Architected for Scale and Developer Velocity",
-    "featuresSubtitle": "Everything you need to jumpstart enterprise applications with clean code principles.",
-    "features": {
-      "i18n": {
-        "title": "Bilingual (AR/EN) & RTL",
-        "description": "Seamless English and Arabic language switching with instant RTL/LTR layout transitions and zero layout shifts."
-      },
-      "theme": {
-        "title": "Light & Dark Theming",
-        "description": "Flicker-free theme switching with next-themes, standard semantic CSS variables, and accessible contrast ratios."
-      },
-      "forms": {
-        "title": "Type-Safe Forms",
-        "description": "Form validation powered by React Hook Form and Zod schemas with localized validation feedback."
-      },
-      "api": {
-        "title": "API & Server State",
-        "description": "Centralized Axios client with interceptors, token management, and TanStack Query for optimal caching."
-      },
-      "ui": {
-        "title": "Modular Design System",
-        "description": "Carefully selected shadcn/ui components customized for consistency, accessibility, and RTL readiness."
-      },
-      "state": {
-        "title": "Predictable State Management",
-        "description": "Lightweight client-side state powered by Zustand with persistent storage support."
-      }
-    }
-  },
   "dashboard": {
     "title": "Executive Dashboard",
     "description": "Real-time key metrics, user activity, and performance indicators.",
@@ -660,5 +625,12 @@
       "cta": "Start free trial",
       "ctaShort": "Start free"
     }
+  },
+  "seo": {
+    "siteName": "Dawam",
+    "defaultTitle": "Dawam | Attendance & Field Rep Tracking",
+    "titleTemplate": "%s | Dawam",
+    "description": "Dawam helps your company track attendance, field visits and sales reps, and manage shifts and leave — all in one place.",
+    "ogImageAlt": "Dawam — attendance and field rep tracking"
   }
 }

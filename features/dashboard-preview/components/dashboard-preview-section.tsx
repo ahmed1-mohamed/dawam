@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/gsap";
+import { useLazyAnimation } from "@/hooks/use-lazy-animation";
 import { ROLES } from "../constants";
 import type { RoleKey } from "../types";
 import { EmployeePane, HrPane, ManagerPane } from "./dashboard-panes";
@@ -20,8 +21,8 @@ export function DashboardPreviewSection() {
   const firstRender = React.useRef(true);
 
   // Entrance: role pills + KPI counters + rows on first scroll into view
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       if (prefersReducedMotion()) return;
       gsap.from(".role", {
         x: 30,
@@ -57,8 +58,8 @@ export function DashboardPreviewSection() {
   );
 
   // Pane switch animation
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       if (firstRender.current) {
         firstRender.current = false;
         return;

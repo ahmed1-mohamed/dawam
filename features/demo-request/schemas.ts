@@ -1,15 +1,24 @@
-import { z } from "zod";
+import type { RegisterOptions } from "react-hook-form";
+import type { CompanySize } from "./types";
+
+export interface DemoRequestFormValues {
+  name: string;
+  companyName: string;
+  phone: string;
+  email: string;
+  companySize: CompanySize;
+}
+
+type TextField = Exclude<keyof DemoRequestFormValues, "companySize">;
 
 /**
- * Client-side validation. Messages are translation keys under
- * `landing.demo.fields.<field>.error`; the form translates them.
+ * Validation rules (react-hook-form built-ins, no schema library, so the
+ * landing page doesn't ship one). Messages are translated in the form from
+ * `landing.demo.fields.<field>.error`, so rules only need to pass/fail.
  */
-export const demoRequestSchema = z.object({
-  name: z.string().trim().min(2),
-  companyName: z.string().trim().min(2),
-  phone: z.string().refine((v) => v.replace(/\D/g, "").length >= 8),
-  email: z.string().trim().email(),
-  companySize: z.enum(["1-20", "21-50", "51-200", "200+"]),
-});
-
-export type DemoRequestFormValues = z.infer<typeof demoRequestSchema>;
+export const DEMO_REQUEST_RULES: Record<TextField, RegisterOptions<DemoRequestFormValues, TextField>> = {
+  name: { validate: (v) => v.trim().length >= 2 },
+  companyName: { validate: (v) => v.trim().length >= 2 },
+  phone: { validate: (v) => v.replace(/\D/g, "").length >= 8 },
+  email: { validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+};

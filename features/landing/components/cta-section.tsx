@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { DEMO_ANCHOR_ID } from "@/features/demo-request";
@@ -23,7 +21,7 @@ export function CtaSection() {
             </div>
           </div>
           <div className="cta-ico" data-float="">
-            <Image src={CTA_IMAGE} alt="" fill sizes="220px" />
+            <Image src={CTA_IMAGE} alt="" fill sizes="(max-width: 600px) 160px, 220px" />
           </div>
         </div>
       </div>

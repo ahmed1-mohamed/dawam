@@ -1,7 +1,8 @@
 "use client";
 
 import type { RefObject } from "react";
-import { gsap, ScrollTrigger, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/gsap";
+import { useLazyAnimation } from "@/hooks/use-lazy-animation";
 import { MAP_HEIGHT, MAP_WIDTH, ROUTE_POINTS, TOTAL_VISITS } from "../constants";
 import { createRoute, createSliceProjection } from "../lib/route-geometry";
 import type { TrackingPinView } from "../types";
@@ -23,8 +24,8 @@ const route = createRoute(ROUTE_POINTS);
  * and each frame only writes the route dash offset and the marker transform.
  */
 export function useRouteAnimation({ scope, pins, onTheWay, toward }: Options) {
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap, ScrollTrigger }) => {
       const map = scope.current;
       const canvas = map?.querySelector<HTMLElement>("[data-canvas]");
       const routeEl = map?.querySelector<SVGPathElement>("[data-route]");
@@ -156,6 +157,6 @@ export function useRouteAnimation({ scope, pins, onTheWay, toward }: Options) {
       return cleanup;
     },
     // Rebuild when texts change (language switch)
-    { scope, dependencies: [pins, onTheWay], revertOnUpdate: true }
+    { scope, dependencies: [pins, onTheWay] }
   );
 }

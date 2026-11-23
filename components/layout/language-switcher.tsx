@@ -24,9 +24,12 @@ export function LanguageSwitcher() {
           aria-label={`${t("language")}: ${nextLabel}`}
         >
           <Languages className="h-4 w-4" />
-          <span className="absolute -bottom-0.5 -end-0.5 rounded bg-primary px-1 font-mono text-[9px] font-semibold uppercase leading-[14px] text-primary-foreground">
-            {nextLocale}
-          </span>
+          {/* Badge drawn via ::after so it isn't part of the button's visible label */}
+          <span
+            aria-hidden="true"
+            data-loc={nextLocale}
+            className="absolute -bottom-0.5 -end-0.5 rounded bg-primary px-1 font-mono text-[9px] font-semibold uppercase leading-[14px] text-primary-foreground after:content-[attr(data-loc)]"
+          />
         </Button>
       </TooltipTrigger>
       <TooltipContent side="bottom">

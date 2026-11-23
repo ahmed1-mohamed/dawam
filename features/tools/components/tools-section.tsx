@@ -3,7 +3,8 @@
 import * as React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/gsap";
+import { useLazyAnimation } from "@/hooks/use-lazy-animation";
 import { useAutoRotate } from "@/hooks/use-auto-rotate";
 import { TOOLS, TOOL_ROTATE_SECONDS } from "../constants";
 
@@ -21,8 +22,8 @@ export function ToolsSection() {
   });
 
   // Entrance + icon pop when a panel opens
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       if (prefersReducedMotion()) return;
       gsap.from(".acc-p", {
         y: 40,
@@ -36,8 +37,8 @@ export function ToolsSection() {
     { scope: accRef }
   );
 
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       if (prefersReducedMotion()) return;
       gsap.fromTo(
         `[data-acc="${active}"] .acc-ic img`,
@@ -74,7 +75,7 @@ export function ToolsSection() {
               >
                 <span className="acc-n">{String(i + 1).padStart(2, "0")}</span>
                 <span className="acc-ic">
-                  <Image src={tool.image} alt="" width={340} height={340} sizes="170px" />
+                  <Image src={tool.image} alt="" width={340} height={340} sizes="(max-width: 960px) 96px, 170px" />
                 </span>
                 <span className="acc-v">{t(`items.${tool.key}.title`)}</span>
                 <span className="acc-body">

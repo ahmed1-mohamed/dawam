@@ -19,11 +19,10 @@ function LocaleIconButton() {
       disabled={isPending}
       aria-label={t("switchLanguage", { language: nextLabel })}
       title={nextLabel}
+      // Badge is drawn by CSS (::after) so it isn't counted as the button's visible label
+      data-loc={nextLocale.toUpperCase()}
     >
-      <Languages />
-      <span className="loc" aria-hidden="true">
-        {nextLocale.toUpperCase()}
-      </span>
+      <Languages aria-hidden="true" />
     </button>
   );
 }

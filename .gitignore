@@ -8,6 +8,7 @@
 
 # next.js
 /.next/
+/.next-perf/
 /out/
 
 # production
@@ -28,3 +29,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# performance reports (npm run perf)
+/reports/

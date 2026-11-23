@@ -42,10 +42,11 @@ export function BottomBar() {
             href={`https://wa.me/${settings.whatsappNumber}`}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t("whatsapp")}
           >
             <WhatsAppIcon />
+            {/* Visible number + hidden context: the accessible name contains the visible text */}
             <span className="ltr">{settings.whatsappDisplay ?? `+${settings.whatsappNumber}`}</span>
+            <span className="sr-only">{t("whatsapp")}</span>
           </a>
           <a className="btn btn-p bbar-cta" href={`#${DEMO_ANCHOR_ID}`}>
             <span className="full">{t("cta")}</span>

@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { DEMO_ANCHOR_ID } from "@/features/demo-request";
 import { WHY_KEYS } from "../constants";

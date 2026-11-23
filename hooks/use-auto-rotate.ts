@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { prefersReducedMotion } from "@/lib/gsap";
+import { useLazyAnimation } from "@/hooks/use-lazy-animation";
 
 interface Options {
   count: number;
@@ -41,8 +42,8 @@ export function useAutoRotate({ count, duration, scope, barSelector, allBarsSele
     return () => io.disconnect();
   }, [scope, threshold]);
 
-  useGSAP(
-    () => {
+  useLazyAnimation(
+    ({ gsap }) => {
       gsap.set(allBarsSelector, { scaleX: 0 });
       if (prefersReducedMotion() || count < 2) return;
       tween.current = gsap.to(barSelector(active), {
@@ -53,7 +54,7 @@ export function useAutoRotate({ count, duration, scope, barSelector, allBarsSele
       });
       if (!visible.current) tween.current.pause();
     },
-    { scope, dependencies: [active, count], revertOnUpdate: true }
+    { scope, dependencies: [active, count] }
   );
 
   return { active, select: setActive };
